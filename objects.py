@@ -65,7 +65,7 @@ class Car(object):
 		self.place = place
 
 	def __str__(self):
-		return '{} {} {} {} {} {} {} {}'.format(
+		return '{} {} {} {} {} {} {} {}\n'.format(
 			self.carID,
 			self.make,
 			self.model, 
@@ -111,9 +111,9 @@ class Car(object):
 
 		carPlace = input("Place: ")
 
-		carNewPlace = carCheck(file, carPlace)
+		#carNewPlace = carCheck(file, carPlace)
 
-		carPlace = carNewPlace
+		#carPlace = carNewPlace
 
 		carInCarPark = Car(
 			carID = carId,

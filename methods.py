@@ -7,8 +7,7 @@ def menu():
 		3. See all data.
 		4. Modify data.
 		5. Delete data.  
-		6. Exit.
-		7. Delete file.\n""")
+		6. Exit.\n""")
 
 def carIdCheck(file, param):
 
@@ -31,19 +30,27 @@ def carIdCheck(file, param):
 				carCheck(file, param)
 
 	return param
+
 def idRegEx(carId):
 
 	if len(carId) == 4:
+
 		for i in range(len(carId)):
 
 			if re.match(r"\d\d\d\d", carId):
+		
 				return carId
+		
 			else:
+		
 				newCarId = input("Your input is incorrect. Please, reenter it in such a way: 0000. Your input: ")
+		
 				idRegEx(newCarId)
 
 	else:
+		
 		newCarId = input("Your input is incorrect. Please, reenter it in such a way: 0000. Your input: ")
+		
 		idRegEx(newCarId)
 
 

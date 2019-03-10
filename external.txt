@@ -4,8 +4,15 @@ Car ID: 003A Make: Audi: Model: A4 Year: 2014 numberPlate: BC2546AB Color: Blue 
 
 =======================================================================================
 0001 Audi A1 2018 BC0123AA Red Zaur A.A. 01
-0002 Audi A3 2015 BC1123AA Blue Baum I.A. 03
+0101 Audi A3 2015 BC1123AA Blue Baum I.A. 03
 0003 BMW Z4 2009 BC0323AB Black Cher O.A. 06
 0004 Audi A8 2003 BC0001AA Yellow Pakora P.P. 08
 0005 Mazda 3 2012 BC5654EP Grey Bipon B.O. 11
 0006 Citroen C4 2016 BC9874EB Red Buk O.A. 20
+0111 Kia Ceed 2011 BC9912EC Grey Linyo B.A. 45
+0112 Toyota Camry 2008 BC3422OB Blue Kinolin O.I. 19
+0079 Seat Leon 1999 BC02455BB White Marenko P.P. 33
+0033 Honda Civic 2010 BC1445CE Green Polov T.T. 14
+0019 Chevrolet Cruze 2009 BC1768EB Red Olinko I.A 36
+0010 Dodge Durango 2012 BC0990CE Black Visik E.O. 66
+0014 Ford Focus 2015 BC1221EB Blue Ilkiv A.M. 37
