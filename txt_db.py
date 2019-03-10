@@ -1,51 +1,10 @@
 import os
-from objects import Car as Car
+from objects import (
+	Car as Car)
 from methods import menu as menu
+from methods import (carCheck as carCheck)
+import re
 
-
-def carIdCheck(file, param):
-
-	lines = []
-
-	with open(file) as f:
-
-		for row in f:
-
-			lines.append(row)
-
-		for line in lines:
-
-			if param in line:
-
-				print("Current data is in use. Try another one.")
-
-				param = input("Car new data: ")
-				
-				carCheck(file, param)
-
-	return param
-
-def carCheck(file, param):
-
-	lines = []
-
-	with open(file) as f:
-
-		for row in f:
-
-			lines.append(row)
-
-		for line in lines:
-
-			if param in line:
-
-				print("Current data is in use. Try another one.")
-
-				param = input("Car new data: ")
-				
-				carCheck(file, param)
-
-	return param
 
 def main():
 
@@ -56,13 +15,15 @@ def main():
 	print("\n")
 
 	if choice == "1":
+
+		'''Input data '''
+
 		if not os.path.exists("carpark.txt"):
 			carstore = open("carpark.txt", "w+")
 
 		else:
 
 			carstore = open("carpark.txt", "a")
-
 
 		carInCarPark = Car.carInput()
 
@@ -75,6 +36,8 @@ def main():
 		main()
 
 	elif choice == "2":
+
+		'''Search specific data '''
 
 		carIdSearch = input('Enter the search parameter: ')
 		#carParam = input('Enter the parameter: ')
@@ -97,10 +60,13 @@ def main():
     	
 	elif choice == "3":
 
+		'''See all data '''
+
 		carstore = open("carpark.txt", "r")
 		
 		carstore_display = carstore.read()
 		
+		#Car.defaultPrint()
 		print(carstore_display)
 
 		print("\n")
@@ -109,52 +75,67 @@ def main():
 
 	elif choice == "4":
 
+		''' Modify data ''' 
+
 		#carstore = open("carstore.txt", "w+")
 		
 		carIdSearch = input('Enter the ID : ')
 		#carParam = input('Enter the parameter: ')
 
 		lines = []
+		lines2 = []
 		modlist = []
 
 		infile = "carpark.txt"
+
 		outfile = "carparkMod.txt"
 
-		with open('carpark.txt') as f:
 
-			for row in f:
+		#outfile = "carparkMod.txt"
 
-				lines.append(row)
+		with open(outfile, "w") as f1:
 
-			fin = open(infile, "r+")
-			fout = open(outfile, "w+")
+			with open(infile, "r+") as f:
+				for row in f:
 
-			for line in lines:
+					lines.append(row)
+					#lines.append("\n")
 
-				if carIdSearch in line:
-					print(line)
-					modlist.append(input("Field to modify:"))
-					newfield = input("New data:")
+				#fin = open(infile, "r+")
+				#fout = open(outfile, "w+")
+
+				for line in lines:
+
+					if carIdSearch in line:
+						print(line)
+
+						modlist.append(input("Field to modify: "))
+						newfield = input("New data: ")
 
 					for word in modlist:
-						line = line.replace(word, newfield )
-				fout.write(line)
-			fin.close()
-		#infile.seek(0)
-		#infile.truncate()
-		with open(outfile) as f:
-			with open(infile, "w") as f1:
-				for line in f:
+							line = line.replace(word, newfield )
 					f1.write(line)
 
-		fout.close()
+				f1.close()
+			f.close()
 
+		'''with open(outfile, "r+") as f:
+			with open(infile, "w+") as f1:
+				for line in lines:
+					f1.write(line)'''
 
-
-
+		os.rename(outfile, infile)
+		#fout.close()
 		main()
 
 	elif choice == "5":
+
+		''' Delete data '''
+
+		infile = "carpark.txt"
+
+		outfile = "carparkMod.txt"
+
 
 		carIdSearch = input('Enter the ID : ')
 		#carParam = input('Enter the parameter: ')
@@ -162,23 +143,39 @@ def main():
 		lines = []
 		modlist  = []
 
-		with open('carpark.txt') as f:
 
-			for row in f:
+		with open(outfile, "w") as f1:
+			with open(infile, "r+") as f:
 
-				lines.append(row)
+				for row in f:
+
+					lines.append(row)
+					#line.append("\n")
 
 
-			for i  in range(len(lines)):
+				for line in lines:
 
-				if carIdSearch in lines[i]:
-					print(lines[i], "\n")
-					lines.remove(lines[i])
-			for line in lines:
-				f.write()
+					if carIdSearch not in line:
+						print(line)
+						deleteDesicion = input("Do you want to delete the record? Y/N: ")
+
+						if deleteDesicion == 'y' or deleteDesicion == 'Y':
+							f1.write(line)
+							break
+						elif deleteDesicion == 'n' or deleteDesicion == 'N':
+							main()
+							break
+
+						else:
+							pass
+
+		os.rename(outfile, infile)
+
 
 
 	elif choice == "6":
+
+		''' Exit ''' 
 		
 		print("Bye!")
 

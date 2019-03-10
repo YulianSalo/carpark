@@ -1,0 +1,11 @@
+Car ID: 0001 Make: VW: Model: Passat Year: 2015 numberPlate: BC0001AA Color: Red Owner(s): Vaskiv V.O. Place: 01A 
+Car ID: 0002 Make: BMW: Model: 116 Year: 2008 numberPlate: BC2004EB Color: Blue Owner(s): Beloniv B.I. Place: 02A 
+Car ID: 003A Make: Audi: Model: A4 Year: 2014 numberPlate: BC2546AB Color: Blue Owner(s): Petroniv M.M. Place: 04A 
+
+=======================================================================================
+0001 Audi A1 2018 BC0123AA Red Zaur A.A. 01
+0002 Audi A3 2015 BC1123AA Blue Baum I.A. 03
+0003 BMW Z4 2009 BC0323AB Black Cher O.A. 06
+0004 Audi A8 2003 BC0001AA Yellow Pakora P.P. 08
+0005 Mazda 3 2012 BC5654EP Grey Bipon B.O. 11
+0006 Citroen C4 2016 BC9874EB Red Buk O.A. 20

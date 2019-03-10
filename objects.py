@@ -1,3 +1,9 @@
+from methods import (
+	carCheck as carCheck,
+	carIdCheck as carIdCheck,
+	idRegEx as idRegEx)
+import re
+
 class Car(object):
 	"""docstring for ClassName"""
 	def __init__(self, carID, make, model, year, numberPlate, color, owner, place):
@@ -59,7 +65,7 @@ class Car(object):
 		self.place = place
 
 	def __str__(self):
-		return 'Car ID: {} Make: {}: Model: {} Year: {} numberPlate: {} Color: {} Owner(s): {} Place: {} \n'.format(
+		return '{} {} {} {} {} {} {} {}'.format(
 			self.carID,
 			self.make,
 			self.model, 
@@ -69,12 +75,19 @@ class Car(object):
 			self.owner, 
 			self.place)
 
+	def defaultPrint():
+		print('Car ID      Make       Model       Year       numberPlate   Color      Owner(s)     Place      \n')
+
 
 	def carInput():
 		
-		carId = input("carID: ")
+		carId = input("Enter carID in such a way:0000. Your input:  ")
 
 		file = "carpark.txt"
+
+		checkedCarId = idRegEx(carId)
+
+		carId = str(checkedCarId)
 
 		carNewId = carIdCheck(file, carId)
 
