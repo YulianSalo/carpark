@@ -24,9 +24,20 @@ for line in lines:
 
 	sortId.append(gotId)
 
-print(sortId)
-
 sortId.sort()
+
+
+with open("idList.txt", "w") as f1:
+
+	with open(workingFile, "r+") as f:
+	
+		for i in range(len(sortId)):
+
+			f1.write(sortId[i])
+
+		f1.close()
+
+	f.close()
 
 print(sortId)
 

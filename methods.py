@@ -101,6 +101,18 @@ def idSearch(workingFile):
 
 			sortId.append(str(gotId))
 
+		with open("idList.txt", "w") as f1:
+
+			with open(workingFile, "r+") as f:
+			
+				for sId in sortId:
+
+					f1.write(sId)
+
+				f1.close()
+
+			f.close()
+
 	return sortId
 
 def readInList(infile):

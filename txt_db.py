@@ -23,6 +23,7 @@ def main():
 		'''Input data '''
 
 		if not os.path.exists("carpark.txt"):
+
 			carstore = open("carpark.txt", "w+")
 
 		else:
@@ -90,6 +91,8 @@ def main():
 		infile = "carpark.txt"
 
 		outfile = "carparkMod.txt"
+
+		checklines = readInList(infile)
 
 		lines = readInList(infile)
 

@@ -121,6 +121,8 @@ def main():
 
 		outfile = "carparkMod.txt"
 
+		sortId = idSearch(infile)
+
 		lines = readInList(infile)
 
 		lines.sort()
@@ -131,7 +133,7 @@ def main():
 
 				for line in lines:
 
-					if carIdSearch in line:
+					if carIdSearch in line and carIdSearch in sortId:
 
 						print(line)
 
@@ -169,19 +171,23 @@ def main():
 
 		lines.sort()
 
-		for line in lines:
+		for line in range (len(lines)):
 
-			if carIdSearch in line and carIdSearch in sortId:
+			if carIdSearch in lines[line] and carIdSearch in sortId[line]:
 
-				print(line)
+				print(lines[line])
 
 				deleteDesicion = input("Do you want to delete the record? Y/N: ")
 
 				if deleteDesicion == 'y' or deleteDesicion == 'Y':
 
-					lines.remove(line)
+					lines.remove(lines[line])
+
+					sortId.remove(sortId[line])
 
 					reWrite(infile, outfile, lines)
+
+					reWrite("idList.txt", "idListMod.txt", sortId)
 				
 					print("\nDone.\n ")
 
