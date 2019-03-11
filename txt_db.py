@@ -6,7 +6,7 @@ from methods import (
 	menu as menu,
 	idSearch as idSearch,
 	readInList as readInList,
-	reWriteTxt as reWriteTxt)
+	reWrite as reWrite)
 import re
 
 
@@ -45,7 +45,6 @@ def main():
 		'''Search specific data '''
 
 		carIdSearch = input('Enter the search parameter: ')
-		#carParam = input('Enter the parameter: ')
 
 		lines = []
 
@@ -91,8 +90,6 @@ def main():
 		infile = "carpark.txt"
 
 		outfile = "carparkMod.txt"
-
-		checklines = readInList(infile)
 
 		lines = readInList(infile)
 
@@ -153,7 +150,7 @@ def main():
 
 					lines.remove(line)
 
-					reWriteTxt(infile, outfile, lines)
+					reWrite(infile, outfile, lines)
 				
 					print("\nDone.\n ")
 
