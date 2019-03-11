@@ -1,8 +1,12 @@
 import os
 from objects import (
 	Car as Car)
-from methods import menu as menu
-from methods import (carCheck as carCheck)
+from methods import (
+	carCheck as carCheck,
+	menu as menu,
+	idSearch as idSearch,
+	readInList as readInList,
+	reWrite as reWrite)
 import re
 
 
@@ -18,13 +22,13 @@ def main():
 
 		'''Input data '''
 
-		if not os.path.exists("carpark.txt"):
+		if not os.path.exists("carParkSort.txt"):
 			
-			carstore = open("carpark.txt", "w+")
+			carstore = open("carParkSort.txt", "w+")
 
 		else:
 
-			carstore = open("carpark.txt", "a")
+			carstore = open("carParkSort.txt", "a")
 
 		carInCarPark = Car.carInput()
 
@@ -32,35 +36,15 @@ def main():
 
 		carstore.close()
 
-		infile = "carpark.txt"
+		infile = "carParkSort.txt"
 
 		outfile = "carparkMod.txt"
 
-		lines = []
-		
-		with open(infile, "r+") as f:
-			for row in f:
+		lines = readInList(infile)
 
-				ines.append(row)
+		lines.sort()
 
-			f.close()
-
-		lines(sort)
-
-		with open(outfile, "w") as f1:
-
-			with open(infile, "r+") as f:
-
-				for line in lines:
-
-					f1.write(line)
-
-				f1.close()
-			f.close()
-
-		os.rename(outfile, infile)
-
-
+		reWrite(infile, outfile, lines)
 
 		print("\n")
 
@@ -75,7 +59,7 @@ def main():
 
 		lines = []
 
-		with open('carpark.txt') as f:
+		with open('carParkSort.txt') as f:
 
 			for row in f:
 
@@ -93,32 +77,33 @@ def main():
 
 		'''See all data '''
 
-		carstore = open("carpark.txt", "r")
-		
-		carstore_display = carstore.read()
-		
-		#Car.defaultPrint()
-		print(carstore_display)
+		infile = "carParkSort.txt"
 
-		###############################################
-		lines = []
+		outfile = "carparkMod.txt"
 
-		workingFile = "carpark.txt"
+		lines = readInList(infile)
 
-		with open(workingFile, "r+") as f:
-			for row in f:
-				#for i in range(4):
-				lines.append(row)
 		lines.sort()
 
-		for line in lines:
-			print(line)
+		with open(outfile, "w") as f1:
 
+			with open(infile, "r+") as f:
 
+				for line in lines:
 
+					f1.write(line)
 
+			f1.close()
+		
+		f.close()
 
-		################################################
+		os.rename(outfile, infile)
+
+		carstore = open("carParkSort.txt", "r")
+		
+		carstore_display = carstore.read()
+
+		print(carstore_display)
 
 		print("\n")
 
@@ -129,26 +114,14 @@ def main():
 		''' Modify data ''' 
 		
 		carIdSearch = input('Enter the ID : ')
-		#carParam = input('Enter the parameter: ')
-
-		lines = []
 		
 		modlist = []
 
-		infile = "carpark.txt"
+		infile = "carParkSort.txt"
 
 		outfile = "carparkMod.txt"
 
-
-		#outfile = "carparkMod.txt"
-
-
-		with open(infile, "r+") as f:
-			for row in f:
-
-				lines.append(row)
-
-			f.close()
+		lines = readInList(infile)
 
 		lines.sort()
 
@@ -159,16 +132,21 @@ def main():
 				for line in lines:
 
 					if carIdSearch in line:
+
 						print(line)
 
 						modlist.append(input("Field to modify: "))
+						
 						newfield = input("New data: ")
 
 					for word in modlist:
+							
 							line = line.replace(word, newfield )
+					
 					f1.write(line)
 
 				f1.close()
+			
 			f.close()
 
 		os.rename(outfile, infile)
@@ -179,58 +157,45 @@ def main():
 
 		''' Delete data '''
 
-		infile = "carpark.txt"
+		infile = "carParkSort.txt"
 
 		outfile = "carparkMod.txt"
 
-
 		carIdSearch = input('Enter the ID : ')
 
-		lines = []
+		sortId = idSearch(infile)
 
-		modlist  = []
-
-		with open(infile, "r+") as f:
-
-			for row in f:
-
-				lines.append(row)
-
-			f.close()
+		lines = readInList(infile)
 
 		lines.sort()
 
+		for line in lines:
 
-		with open(outfile, "w") as f1:
-			with open(infile, "r+") as f:
+			if carIdSearch in line and carIdSearch in sortId:
 
-				for line in lines:
+				print(line)
 
-					if carIdSearch in line:
+				deleteDesicion = input("Do you want to delete the record? Y/N: ")
 
-						print(line)
-						
-						deleteDesicion = input("Do you want to delete the record? Y/N: ")
+				if deleteDesicion == 'y' or deleteDesicion == 'Y':
 
-						if deleteDesicion == 'y' or deleteDesicion == 'Y':
+					lines.remove(line)
 
-							if carIdSearch not in line:
-						
-								f1.write(line)
-						
-							break
-						
-						elif deleteDesicion == 'n' or deleteDesicion == 'N':
-						
-							main()
-						
-							break
+					reWrite(infile, outfile, lines)
+				
+					print("\nDone.\n ")
 
-						else:
-							
-							pass
+					main()
+				
+				elif deleteDesicion == 'n' or deleteDesicion == 'N':
+				
+					main()
 
-		os.rename(outfile, infile)
+				else:
+					
+					print("Wrong button pressed. Returning to main menu.")
+
+					main()
 
 	elif choice == "6":
 

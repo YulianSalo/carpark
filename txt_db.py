@@ -1,8 +1,12 @@
 import os
 from objects import (
 	Car as Car)
-from methods import menu as menu
-from methods import (carCheck as carCheck)
+from methods import (
+	carCheck as carCheck,
+	menu as menu,
+	idSearch as idSearch,
+	readInList as readInList,
+	reWriteTxt as reWriteTxt)
 import re
 
 
@@ -76,56 +80,45 @@ def main():
 	elif choice == "4":
 
 		''' Modify data ''' 
-
-		#carstore = open("carstore.txt", "w+")
 		
 		carIdSearch = input('Enter the ID : ')
-		#carParam = input('Enter the parameter: ')
 
-		lines = []
-		lines2 = []
 		modlist = []
+
+		sortId = idSearch(infile)
 
 		infile = "carpark.txt"
 
 		outfile = "carparkMod.txt"
 
-
-		#outfile = "carparkMod.txt"
+		lines = readInList(infile)
 
 		with open(outfile, "w") as f1:
 
 			with open(infile, "r+") as f:
-				for row in f:
-
-					lines.append(row)
-					#lines.append("\n")
-
-				#fin = open(infile, "r+")
-				#fout = open(outfile, "w+")
 
 				for line in lines:
 
-					if carIdSearch in line:
+					if carIdSearch in line and carIdSearch in sortId:
+						
 						print(line)
 
 						modlist.append(input("Field to modify: "))
+						
 						newfield = input("New data: ")
 
 					for word in modlist:
+						
 							line = line.replace(word, newfield )
+					
 					f1.write(line)
 
 				f1.close()
+			
 			f.close()
 
-		'''with open(outfile, "r+") as f:
-			with open(infile, "w+") as f1:
-				for line in lines:
-					f1.write(line)'''
-
 		os.rename(outfile, infile)
-		#fout.close()
+
 		main()
 
 	elif choice == "5":
@@ -138,39 +131,40 @@ def main():
 
 
 		carIdSearch = input('Enter the ID : ')
-		#carParam = input('Enter the parameter: ')
 
 		lines = []
-		modlist  = []
 
+		sortId = idSearch(infile)
 
-		with open(outfile, "w") as f1:
-			with open(infile, "r+") as f:
+		lines = readInList(infile)
 
-				for row in f:
+		for line in lines:
 
-					lines.append(row)
-					#line.append("\n")
+			if carIdSearch in line and carIdSearch in sortId:
 
+				print(line)
 
-				for line in lines:
+				deleteDesicion = input("Do you want to delete the record? Y/N: ")
 
-					if carIdSearch not in line:
-						print(line)
-						deleteDesicion = input("Do you want to delete the record? Y/N: ")
+				if deleteDesicion == 'y' or deleteDesicion == 'Y':
 
-						if deleteDesicion == 'y' or deleteDesicion == 'Y':
-							f1.write(line)
-							break
-						elif deleteDesicion == 'n' or deleteDesicion == 'N':
-							main()
-							break
+					lines.remove(line)
 
-						else:
-							pass
+					reWriteTxt(infile, outfile, lines)
+				
+					print("\nDone.\n ")
 
-		os.rename(outfile, infile)
+					main()
+				
+				elif deleteDesicion == 'n' or deleteDesicion == 'N':
+				
+					main()
 
+				else:
+					
+					print("Wrong button pressed. Returning to main menu.")
+
+					main()
 
 
 	elif choice == "6":

@@ -1,4 +1,5 @@
 import re
+import os
 
 def menu():
 	print("""Please choose an action to start:
@@ -75,3 +76,58 @@ def carCheck(file, param):
 				carCheck(file, param)
 
 	return param
+
+def idSearch(workingFile):
+	
+	lines = []
+
+	sortId = []
+
+	gotId = " "
+
+	#workingFile = "carParkSort.txt"
+
+	with open(workingFile, "r+") as f:
+		
+		for row in f:
+			#for i in range(4):
+			lines.append(row)
+		
+		for line in lines:
+			
+			for i in range(len(line)):
+				
+				gotId = line[0] + line[1] + line[2] + line[3]
+
+			sortId.append(str(gotId))
+
+	return sortId
+
+def readInList(infile):
+
+	lines = []
+
+	with open(infile, "r+") as f:
+
+		for row in f:
+
+			lines.append(row)
+
+		f.close()
+
+	return lines
+
+def reWrite(infile, outfile, lines):
+	with open(outfile, "w") as f1:
+
+		with open(infile, "r+") as f:
+		
+			for line in lines:
+
+				f1.write(line)
+
+			f1.close()
+
+		f.close()
+
+	os.rename(outfile, infile)
