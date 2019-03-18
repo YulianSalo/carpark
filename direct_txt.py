@@ -87,29 +87,9 @@ class DoublyLinkedList:
 
 		 return data
 
-dListZero = DoublyLinkedList()
 
-dListOne = DoublyLinkedList()
 
-dListTwo = DoublyLinkedList()
-
-dListThree = DoublyLinkedList()
-
-dListFour = DoublyLinkedList()
-
-dListFive = DoublyLinkedList()
-
-dListSix = DoublyLinkedList()
-
-dListSeven = DoublyLinkedList()
-
-dListEight = DoublyLinkedList()
-
-dListNine = DoublyLinkedList()
-
-dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
-  
-
+#dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
 
 def main():
 
@@ -122,6 +102,28 @@ def main():
 	if choice == "1":
 
 		'''Input data '''
+
+		dListZero = DoublyLinkedList()
+
+		dListOne = DoublyLinkedList()
+
+		dListTwo = DoublyLinkedList()
+
+		dListThree = DoublyLinkedList()
+
+		dListFour = DoublyLinkedList()
+
+		dListFive = DoublyLinkedList()
+
+		dListSix = DoublyLinkedList()
+
+		dListSeven = DoublyLinkedList()
+
+		dListEight = DoublyLinkedList()
+
+		dListNine = DoublyLinkedList()
+
+		dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
 
 		if not os.path.exists("carpark.txt"):
 
@@ -147,11 +149,13 @@ def main():
 
 				carstore.write(tmp)
 
-			carstore.close()
-
 			dList[i].printList(dList[i].head)
 
+		carstore.close()
+
 		print("\n")
+
+		dList = []
 
 		main()
 
@@ -159,66 +163,86 @@ def main():
 
 		'''Search specific data '''
 
+		dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
+
+		dListZero = DoublyLinkedList()
+
+		dListOne = DoublyLinkedList()
+
+		dListTwo = DoublyLinkedList()
+
+		dListThree = DoublyLinkedList()
+
+		dListFour = DoublyLinkedList()
+
+		dListFive = DoublyLinkedList()
+
+		dListSix = DoublyLinkedList()
+
+		dListSeven = DoublyLinkedList()
+
+		dListEight = DoublyLinkedList()
+
+		dListNine = DoublyLinkedList()
+
 		carIdSearch = input('Enter the search parameter: ')
-
-		lines = []
-
-		with open('carpark.txt') as f:
-
+	
+		with open('carpark.txt', "r+") as f:
+	
 			for row in f:
+		#for i in range(4):
 
-				lines.append(row)
+				if row[3] == carIdSearch[3] and carIdSearch in row:
 
+					for i in range(len(dList)):
 
-			for line in lines:
+						dList[i].push(row)
 
-				if carIdSearch in line:
-					print(line)
+						dList[i].printList(dList[i].head)
+
+						break
+
+		dList = []
 
 		main()
     	
 	elif choice == "3":
 
-		'''See all data '''
+		'''Read all data'''
 
-		#carstore = open("carpark.txt", "r")
-		
-		#carstore_display = carstore.read()
-		
-		#Car.defaultPrint()
-		#print(carstore_display)
+		dListZero = DoublyLinkedList()
 
-		lines = []
+		dListOne = DoublyLinkedList()
 
-		sortId = []
+		dListTwo = DoublyLinkedList()
+
+		dListThree = DoublyLinkedList()
+
+		dListFour = DoublyLinkedList()
+
+		dListFive = DoublyLinkedList()
+
+		dListSix = DoublyLinkedList()
+
+		dListSeven = DoublyLinkedList()
+
+		dListEight = DoublyLinkedList()
+
+		dListNine = DoublyLinkedList()
+
+		dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
 
 		with open('carpark.txt', "r+") as f:
 	
 			for row in f:
-		#for i in range(4):
-				lines.append(row)
 
-		for line in lines:
-	
-			for i in range(len(line)):
-			
-				gotId = line[3]
+				for i in range(len(dList)):
 
-			sortId.append(gotId)
+					if row[3] == str(i):
 
+						dList[i].push(row)
 
-
-		for line in range(len(lines)):
-
-
-			#print(lines[line], int(sortId[line]))
-
-			for i in range(len(dList)):
-
-				if int(sortId[line]) == i:
-
-					dList[i].push(lines[line])
-
+			f.close()
 
 		for i in range(len(dList)):
 				
@@ -228,49 +252,141 @@ def main():
 
 		print("\n")
 
+		dlist = []
+
 		main()		
 
 	elif choice == "4":
 
 		''' Modify data ''' 
+
+		dListZero = DoublyLinkedList()
+
+		dListOne = DoublyLinkedList()
+
+		dListTwo = DoublyLinkedList()
+
+		dListThree = DoublyLinkedList()
+
+		dListFour = DoublyLinkedList()
+
+		dListFive = DoublyLinkedList()
+
+		dListSix = DoublyLinkedList()
+
+		dListSeven = DoublyLinkedList()
+
+		dListEight = DoublyLinkedList()
+
+		dListNine = DoublyLinkedList()
+
+		dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
 		
 		carIdSearch = input('Enter the ID : ')
 
 		modlist = []
 
-		sortId = idSearch(infile)
+		lines = []
 
 		infile = "carpark.txt"
 
-		outfile = "carparkMod.txt"
+		with open('carpark.txt', "r+") as f:
 
-		lines = readInList(infile)
+			for row in f:
 
-		with open(outfile, "w") as f1:
+				for i in range(len(dList)):
 
-			with open(infile, "r+") as f:
+					if row[3] == str(i):
 
-				for line in lines:
+						lines.append(row)
 
-					if carIdSearch in line and carIdSearch in sortId:
-						
-						print(line)
-
-						modlist.append(input("Field to modify: "))
-						
-						newfield = input("New data: ")
-
-					for word in modlist:
-						
-							line = line.replace(word, newfield )
-					
-					f1.write(line)
-
-				f1.close()
-			
 			f.close()
 
-		os.rename(outfile, infile)
+		with open(infile, "w+") as f:
+
+			for line in lines:
+
+				if carIdSearch in line:
+					
+					print(line)
+
+					modlist.append(input("Field to modify: "))
+					
+					newfield = input("New data: ")
+
+				for word in modlist:
+					
+					line = line.replace(word, newfield )
+				
+				f.write(line)
+
+			f.close()
+
+		dList = []
+
+
+
+		'''for i in range(len(dList)):
+				
+			dList[i].printList(dList[i].head)
+
+		with open(infile, "r+") as f:
+	
+			for row in f:
+		#for i in range(4):
+
+				if row[3] == carIdSearch[3]:
+
+					lines.append(row)
+
+			f.close()
+		
+		for i in range(len(dList)):
+
+			#for j in range(len(dList[i])):
+
+			if type(dList[i].head) is not None:
+
+				#tmp = (pridList[i].head)
+				
+				tmp = str(dList[i].printList(dList[i].head))
+
+				lines.append(tmp)
+
+		print (lines)
+
+		if carIdSearch in tmpString:
+
+			print(dList[i].getNodeData(dList[i].head))
+
+			dList[i].deleteNode(dList[i].head) 
+
+			modField = input("Field to modify: ")
+
+			newField = input("New data: ")
+
+			tmp = str(dList[i].getNodeData(dList[i].head))
+
+			tmp = tmp.replace(modField, newField)
+
+			dList[i].push(tmp)
+
+			#dList[i].printList(dList[i].head)
+
+			#dList[i] = str(dList[i].replace(modField, newField))
+
+
+		with open('carpark.txt', "r+") as f:
+					
+			for i in range(len(dList)):
+
+				tmp = str(dList[i].getNodeData(dList[i].head))
+
+				f.write(tmp)
+
+				#f.close()
+
+			f.close()'''
 
 		main()
 
@@ -278,22 +394,29 @@ def main():
 
 		''' Delete data '''
 
+		#dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
+
 		infile = "carpark.txt"
-
-		outfile = "carparkMod.txt"
-
 
 		carIdSearch = input('Enter the ID : ')
 
 		lines = []
 
-		sortId = idSearch(infile)
+		with open('carpark.txt', "r+") as f:
 
-		lines = readInList(infile)
+			for row in f:
+
+				for i in range(len(dList)):
+
+					if row[3] == str(i):
+
+						lines.append(row)
+
+			f.close()
 
 		for line in lines:
 
-			if carIdSearch in line and carIdSearch in sortId:
+			if carIdSearch in line:
 
 				print(line)
 
@@ -302,8 +425,12 @@ def main():
 				if deleteDesicion == 'y' or deleteDesicion == 'Y':
 
 					lines.remove(line)
+					
+					with open(infile, "w+") as f:
 
-					reWrite(infile, outfile, lines)
+						for line in lines: 
+
+							f.write(line)
 				
 					print("\nDone.\n ")
 
@@ -327,6 +454,12 @@ def main():
 		print("Bye!")
 
 		exit()
+
+	elif choice == "0":
+
+		print("Programming God's mode is not implemented yet.")
+
+		main()
 
 	else:
 		
