@@ -130,6 +130,7 @@ def readInList(infile):
 	return lines
 
 def reWrite(infile, outfile, lines):
+
 	with open(outfile, "w") as f1:
 
 		with open(infile, "r+") as f:
@@ -143,3 +144,84 @@ def reWrite(infile, outfile, lines):
 		f.close()
 
 	os.rename(outfile, infile)
+
+def reWrited(infile, outfile, gotId):
+	
+	with open(outfile, "w+") as f1:
+
+		with open(infile, "r+") as f:
+		
+			for line in f:
+
+				tmp = (line[:4])
+
+				#print(line)
+
+				#gotId = int(line[:4])
+
+				#print(gotId)
+
+				smlst = gotId
+
+				prevsml = '0'
+
+
+				if gotId > tmp and gotId > prevsml:
+
+					c = 0
+
+					print(c+1)
+
+					gotId = tmp
+
+					smlst = tmp
+
+					print(smlst)
+
+					#reWrited(infile, outfile, gotId)
+
+				elif gotId>=tmp and tmp == smlst and tmp > prevsml:
+
+					print(line)
+
+					f1.write(line)
+					
+					prevsml = smlst
+
+					
+
+					#reWrited(infile, outfile, gotId)
+
+				'''for row in f: 
+
+					if gotId > int(row[:4]):
+
+						gotId = int(row[:4])
+
+						print(gotId)
+
+						reWrited(infile, outfile, gotId)
+
+
+					#reWrited(infile, outfile)
+
+					elif int(gotId) >= int(row[:4]):
+
+						print(row)
+
+						f1.write(row)
+						#f.write()
+					
+
+					#reWrited(infile, outfile, gotId)'''
+
+			f1.close()
+
+		f.close()
+
+		reWrited(infile, outfile, gotId)
+
+	#os.rename(outfile, infile)
+
+
+	#os.rename(outfile, infile)

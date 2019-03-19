@@ -87,11 +87,150 @@ class DoublyLinkedList:
 
 		 return data
 
+'''dListZero = DoublyLinkedList()
 
+dListOne = DoublyLinkedList()
+
+dListTwo = DoublyLinkedList()
+
+dListThree = DoublyLinkedList()
+
+dListFour = DoublyLinkedList()
+
+dListFive = DoublyLinkedList()
+
+dListSix = DoublyLinkedList()
+
+dListSeven = DoublyLinkedList()
+
+dListEight = DoublyLinkedList()
+
+dListNine = DoublyLinkedList()'''
 
 #dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
 
+blockZero = []
+
+blockOne = []
+
+blockTwo = []
+
+blockThree = []
+
+blockFour = []
+
+blockFive = []
+
+blockSix = []
+
+blockSeven = []
+
+blockEight = []
+
+blockNine = []
+
+listZero = []
+
+listOne = []
+
+listTwo = []
+
+listThree = []
+
+listFour = []
+
+listFive = []
+
+listSix = []
+
+listSeven = []
+
+listEight = []
+
+listNine = []
+
+overflowBuffZero = []
+
+overflowBuffOne = []
+
+overflowBuffTwo = []
+
+overflowBuffThree = []
+
+overflowBuffFour = []
+
+overflowBuffFive = []
+
+overflowBuffSix = []
+
+overflowBuffSeven = []
+
+overflowBuffEight = []
+
+overflowBuffNine = []
+
+blockLen  = 5
+
+#blockExample = [listExample, OverflowBuffExample]
+
+listBlocks = [ 
+	blockOne, 
+	blockTwo, 
+	blockThree, 
+	blockFour, 
+	blockFive, 
+	blockSix, 
+	blockSeven, 
+	blockEight, 
+	blockNine,
+	blockZero
+	]
+
+listLists = [ 
+	listOne, 
+	listTwo, 
+	listThree, 
+	listFour, 
+	listFive, 
+	listSix, 
+	listSeven, 
+	listEight, 
+	listNine,
+	listZero
+	]
+
+listOverflowBuff = [ 
+	overflowBuffOne, 
+	overflowBuffTwo, 
+	overflowBuffThree, 
+	overflowBuffFour,
+ 	overflowBuffFive, 
+ 	overflowBuffSix, 
+ 	overflowBuffSeven, 
+ 	overflowBuffEight, 
+ 	overflowBuffNine,
+ 	overflowBuffZero
+ 	]
+
+for i in range(len(listBlocks)):
+
+	listBlocks[i].append(listLists[i])
+
+	listBlocks[i].append(listOverflowBuff[i])
+
+	for j in range(blockLen): 
+
+		listLists[i].append(None)
+
+
+
 def main():
+
+	print(listBlocks)
+
+	infile = "directCar.txt"
+
+	outfile = "carparkMod.txt"
 
 	menu()
 
@@ -103,53 +242,39 @@ def main():
 
 		'''Input data '''
 
-		dListZero = DoublyLinkedList()
+		if not os.path.exists(infile):
 
-		dListOne = DoublyLinkedList()
-
-		dListTwo = DoublyLinkedList()
-
-		dListThree = DoublyLinkedList()
-
-		dListFour = DoublyLinkedList()
-
-		dListFive = DoublyLinkedList()
-
-		dListSix = DoublyLinkedList()
-
-		dListSeven = DoublyLinkedList()
-
-		dListEight = DoublyLinkedList()
-
-		dListNine = DoublyLinkedList()
-
-		dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
-
-		if not os.path.exists("carpark.txt"):
-
-			carstore = open("carpark.txt", "w+")
+			carstore = open(infile, "w+")
 
 		else:
 
-			carstore = open("carpark.txt", "a")
+			carstore = open(infile, "a")
 
 		carInCarPark = Car.carInput()
 
 		getCarId = str(carInCarPark.getCarID())
 
-		for i in range(len(dList)):
+		for i in range(len(listBlocks)):
 
-			if getCarId[-1] == str(i):
+			for j in range(len(listLists[i])):
 
-				dList[i].push(str(carInCarPark))
+				if getCarId[-1] == str(i) and listLists[i][j] == None :
 
-				tmp = dList[i].getNodeData(dList[i].head)
+					listLists[i][j] = str(carInCarPark)
 
-				print(type(tmp))
+					carstore.write(str(listLists[i][j]))
 
-				carstore.write(tmp)
+					break
 
-			dList[i].printList(dList[i].head)
+				elif getCarId[-1] == str(i) and listLists[i][4] != None:
+
+					listOverflowBuff[i].append(str(carInCarPark))
+
+					carstore.write(str(listOverflowBuff[i][-1]))
+
+					break
+
+		print(listBlocks)
 
 		carstore.close()
 
@@ -163,31 +288,9 @@ def main():
 
 		'''Search specific data '''
 
-		dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
-
-		dListZero = DoublyLinkedList()
-
-		dListOne = DoublyLinkedList()
-
-		dListTwo = DoublyLinkedList()
-
-		dListThree = DoublyLinkedList()
-
-		dListFour = DoublyLinkedList()
-
-		dListFive = DoublyLinkedList()
-
-		dListSix = DoublyLinkedList()
-
-		dListSeven = DoublyLinkedList()
-
-		dListEight = DoublyLinkedList()
-
-		dListNine = DoublyLinkedList()
-
 		carIdSearch = input('Enter the search parameter: ')
 	
-		with open('carpark.txt', "r+") as f:
+		with open(infile, "r+") as f:
 	
 			for row in f:
 		#for i in range(4):
@@ -210,7 +313,7 @@ def main():
 
 		'''Read all data'''
 
-		dListZero = DoublyLinkedList()
+		'''dListZero = DoublyLinkedList()
 
 		dListOne = DoublyLinkedList()
 
@@ -250,37 +353,41 @@ def main():
 
 
 
-		print("\n")
+		print("\n")'''
 
-		dlist = []
+		#dlist = []
+
+		lines = readInList(infile)
+
+		lines.sort()
+
+		with open(outfile, "w") as f1:
+
+			with open(infile, "r+") as f:
+
+				for line in lines:
+
+					f1.write(line)
+
+			f1.close()
+		
+		f.close()
+
+		os.rename(outfile, infile)
+
+		carstore = open(infile, "r")
+		
+		carstore_display = carstore.read()
+
+		print(carstore_display)
+
+		print("\n")
 
 		main()		
 
 	elif choice == "4":
 
 		''' Modify data ''' 
-
-		dListZero = DoublyLinkedList()
-
-		dListOne = DoublyLinkedList()
-
-		dListTwo = DoublyLinkedList()
-
-		dListThree = DoublyLinkedList()
-
-		dListFour = DoublyLinkedList()
-
-		dListFive = DoublyLinkedList()
-
-		dListSix = DoublyLinkedList()
-
-		dListSeven = DoublyLinkedList()
-
-		dListEight = DoublyLinkedList()
-
-		dListNine = DoublyLinkedList()
-
-		dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
 		
 		carIdSearch = input('Enter the ID : ')
 
@@ -288,9 +395,7 @@ def main():
 
 		lines = []
 
-		infile = "carpark.txt"
-
-		with open('carpark.txt', "r+") as f:
+		with open(infile, "r+") as f:
 
 			for row in f:
 
@@ -394,15 +499,11 @@ def main():
 
 		''' Delete data '''
 
-		#dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
-
-		infile = "carpark.txt"
-
 		carIdSearch = input('Enter the ID : ')
 
 		lines = []
 
-		with open('carpark.txt', "r+") as f:
+		with open(infile, "r+") as f:
 
 			for row in f:
 

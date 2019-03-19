@@ -17,7 +17,7 @@ class Car(object):
 		self.place = place	
 
 	def getCarID(self):
-		return carID
+		return self.carID
 
 	def getMake(self):
 		return self.make	
