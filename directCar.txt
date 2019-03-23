@@ -24,9 +24,13 @@
 0044 Ford Focus 2015 BC1221EB Blue Ilkiv A.M. 12
 0046 Audi A5 2018 BC33332EB Red Bolik O.L. 48
 0055 Audi A4 2001 BC2217EB Red Pokoiv K.K. 50
-0079 Seat Leon 1999 BC02455BB White Marenko P.P. 10
+0056 Porsche 911 2010 AA5545AA Yellow Tarema A.K. 66
+0079 Seat Leon 2000 BC02455BB White Marenko P.P. 10
+0081 Audi A5 2012 BC1789EA Black Gora K.K. 61
 0091 Dacia Sandero 2011 BC3347II Grey Valerkon P.O. 17
 0101 Audi A3 2015 BC1123AA Blue Baum I.A. 03
 0111 Kia Ceed 2011 BC9912EC Grey Linyo B.A. 09
 0112 Toyota Camry 2008 BC3422OB Blue Kinolin O.I. 05
 0114 Mitsubishi Lancer 2010 BC0343EM Grey Kolomiv S.P. 23
+0181 Audi A6 2012 BC1678EA Black Gora B.K. 61
+0196 Chevrolet Lacetti 2005 AT7845IB Red Lazorko I.O. 67
