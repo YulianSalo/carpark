@@ -11,226 +11,163 @@ import re
 
 import gc 
 
-class Node: 
-
-	def __init__(self, data):
-
-		self.data = data  
-	
-		self.next = None
-	
-		self.prev = None
-
-	def __str__(self, data):
-	
-		return self.data
-
-class DoublyLinkedList: 
-
-	def __init__(self): 
-	
-		self.head = None
-
-
-	def deleteNode(self, dele): 
-
-		if self.head is None or dele is None: 
-			
-			return 
-
-		if self.head == dele:
-			
-			self.head = dele.next
-
-		if dele.next is not None: 
-			
-			dele.next.prev = dele.prev 
-
-		if dele.prev is not None: 
-			
-			dele.prev.next = dele.next
-
-		gc.collect() 
-
-
-	# Given a reference to the head of a list and an 
-	# integer, inserts a new node on the front of list 
-	def push(self, new_data): 
-
-		# 1. Allocates node 
-		# 2. Put the data in it 
-		new_node = Node(new_data) 
-
-		# 3. Make next of new node as head and 
-		# previous as None (already None) 
-		new_node.next = self.head 
-
-		# 4. change prev of head node to new_node 
-		if self.head is not None: 
-		    self.head.prev = new_node 
-
-		# 5. move the head to point to the new node 
-		self.head = new_node 
-
-
-	def printList(self, node): 
-		
-		while(node is not None): 
-		
-			print (node.data) 
-		
-			node = node.next
-
-	def getNodeData(self, node):
-
-		 data = node.data
-
-		 return data
-
-'''dListZero = DoublyLinkedList()
-
-dListOne = DoublyLinkedList()
-
-dListTwo = DoublyLinkedList()
-
-dListThree = DoublyLinkedList()
-
-dListFour = DoublyLinkedList()
-
-dListFive = DoublyLinkedList()
-
-dListSix = DoublyLinkedList()
-
-dListSeven = DoublyLinkedList()
-
-dListEight = DoublyLinkedList()
-
-dListNine = DoublyLinkedList()'''
-
-#dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
-
-blockZero = []
-
-blockOne = []
-
-blockTwo = []
-
-blockThree = []
-
-blockFour = []
-
-blockFive = []
-
-blockSix = []
-
-blockSeven = []
-
-blockEight = []
-
-blockNine = []
-
-listZero = []
-
-listOne = []
-
-listTwo = []
-
-listThree = []
-
-listFour = []
-
-listFive = []
-
-listSix = []
-
-listSeven = []
-
-listEight = []
-
-listNine = []
-
-overflowBuffZero = []
-
-overflowBuffOne = []
-
-overflowBuffTwo = []
-
-overflowBuffThree = []
-
-overflowBuffFour = []
-
-overflowBuffFive = []
-
-overflowBuffSix = []
-
-overflowBuffSeven = []
-
-overflowBuffEight = []
-
-overflowBuffNine = []
-
-blockLen  = 5
-
-#blockExample = [listExample, OverflowBuffExample]
-
-listBlocks = [ 
-	blockOne, 
-	blockTwo, 
-	blockThree, 
-	blockFour, 
-	blockFive, 
-	blockSix, 
-	blockSeven, 
-	blockEight, 
-	blockNine,
-	blockZero
-	]
-
-listLists = [ 
-	listOne, 
-	listTwo, 
-	listThree, 
-	listFour, 
-	listFive, 
-	listSix, 
-	listSeven, 
-	listEight, 
-	listNine,
-	listZero
-	]
-
-listOverflowBuff = [ 
-	overflowBuffOne, 
-	overflowBuffTwo, 
-	overflowBuffThree, 
-	overflowBuffFour,
- 	overflowBuffFive, 
- 	overflowBuffSix, 
- 	overflowBuffSeven, 
- 	overflowBuffEight, 
- 	overflowBuffNine,
- 	overflowBuffZero
- 	]
-
-for i in range(len(listBlocks)):
-
-	listBlocks[i].append(listLists[i])
-
-	listBlocks[i].append(listOverflowBuff[i])
-
-	for j in range(blockLen): 
-
-		listLists[i].append(None)
-
 
 
 def main():
 
-	print(listBlocks)
+	blockZero = []
+
+	blockOne = []
+
+	blockTwo = []
+
+	blockThree = []
+
+	blockFour = []
+
+	blockFive = []
+
+	blockSix = []
+
+	blockSeven = []
+
+	blockEight = []
+
+	blockNine = []
+
+	listZero = []
+
+	listOne = []
+
+	listTwo = []
+
+	listThree = []
+
+	listFour = []
+
+	listFive = []
+
+	listSix = []
+
+	listSeven = []
+
+	listEight = []
+
+	listNine = []
+
+	overflowBuffZero = []
+
+	overflowBuffOne = []
+
+	overflowBuffTwo = []
+
+	overflowBuffThree = []
+
+	overflowBuffFour = []
+
+	overflowBuffFive = []
+
+	overflowBuffSix = []
+
+	overflowBuffSeven = []
+
+	overflowBuffEight = []
+
+	overflowBuffNine = []
+
+	blockLen  = 5
+
+	#blockExample = [listExample, OverflowBuffExample]
+
+	listBlocks = [
+		blockZero, 
+		blockOne, 
+		blockTwo, 
+		blockThree, 
+		blockFour, 
+		blockFive, 
+		blockSix, 
+		blockSeven, 
+		blockEight, 
+		blockNine
+		]
+
+	listLists = [
+		listZero, 
+		listOne, 
+		listTwo, 
+		listThree, 
+		listFour, 
+		listFive, 
+		listSix, 
+		listSeven, 
+		listEight, 
+		listNine
+		]
+
+	listOverflowBuff = [
+		overflowBuffZero, 
+		overflowBuffOne, 
+		overflowBuffTwo, 
+		overflowBuffThree, 
+		overflowBuffFour,
+	 	overflowBuffFive, 
+	 	overflowBuffSix, 
+	 	overflowBuffSeven, 
+	 	overflowBuffEight, 
+	 	overflowBuffNine
+	 	]
+
+	for i in range(len(listBlocks)):
+
+		listBlocks[i].append(listLists[i])
+
+		listBlocks[i].append(listOverflowBuff[i])
+
+		for j in range(blockLen): 
+
+			listLists[i].append(None)
+
+
+	#print(listBlocks)
 
 	infile = "directCar.txt"
 
 	outfile = "carparkMod.txt"
+
+	counter = 0
+
+	with open(infile, "r+")as f:
+
+		for row in f:
+
+			counter +=1
+
+	with open(infile, "r+") as f:
+
+		for row in f:
+
+			for i in range(len(listBlocks)):
+
+					for j in range(counter):
+
+						if j < 5:
+
+							if row[3] == str(i) and listLists[i][j] is None:
+
+
+								listLists[i][j] = row
+
+								break
+
+						if row[3]== str(i) and listLists[i][4] is not None and j >= 5 :
+
+							listOverflowBuff[i].append(row)
+
+							break
+
+	f.close()
+
 
 	menu()
 
@@ -274,88 +211,13 @@ def main():
 
 					break
 
+
+
 		print(listBlocks)
 
 		carstore.close()
 
 		print("\n")
-
-		dList = []
-
-		main()
-
-	elif choice == "2":
-
-		'''Search specific data '''
-
-		carIdSearch = input('Enter the search parameter: ')
-	
-		with open(infile, "r+") as f:
-	
-			for row in f:
-		#for i in range(4):
-
-				if row[3] == carIdSearch[3] and carIdSearch in row:
-
-					for i in range(len(dList)):
-
-						dList[i].push(row)
-
-						dList[i].printList(dList[i].head)
-
-						break
-
-		dList = []
-
-		main()
-    	
-	elif choice == "3":
-
-		'''Read all data'''
-
-		'''dListZero = DoublyLinkedList()
-
-		dListOne = DoublyLinkedList()
-
-		dListTwo = DoublyLinkedList()
-
-		dListThree = DoublyLinkedList()
-
-		dListFour = DoublyLinkedList()
-
-		dListFive = DoublyLinkedList()
-
-		dListSix = DoublyLinkedList()
-
-		dListSeven = DoublyLinkedList()
-
-		dListEight = DoublyLinkedList()
-
-		dListNine = DoublyLinkedList()
-
-		dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
-
-		with open('carpark.txt', "r+") as f:
-	
-			for row in f:
-
-				for i in range(len(dList)):
-
-					if row[3] == str(i):
-
-						dList[i].push(row)
-
-			f.close()
-
-		for i in range(len(dList)):
-				
-			dList[i].printList(dList[i].head)
-
-
-
-		print("\n")'''
-
-		#dlist = []
 
 		lines = readInList(infile)
 
@@ -375,13 +237,86 @@ def main():
 
 		os.rename(outfile, infile)
 
-		carstore = open(infile, "r")
-		
-		carstore_display = carstore.read()
+		main()
 
-		print(carstore_display)
+	elif choice == "2":
+
+		'''Search specific data '''
+
+		result = 0
+
+		carIdSearch = input('Enter the ID : ')
+
+		blockId = int(carIdSearch[3])
+
+		for i in range (len(listLists[blockId])):
+
+			if carIdSearch in listLists[blockId][i]:
+
+				print(listLists[blockId][i])
+
+				result = 1
+
+				break
+
+		for i in range(len(listOverflowBuff[blockId])):
+
+			if carIdSearch in listOverflowBuff[blockId][i]:
+
+				print(listOverflowBuff[blockId][i])
+
+				result = 1
+
+				break
+
+		if result == 0:
+
+			print("No match found.")
+
+		main()
+    	
+	elif choice == "3":
+
+		'''Read all data'''
+
+
+		for i in range(len(listBlocks)):
+
+			print("Block #", i, "\n")
+			
+			for j in range(blockLen):
+
+				if listLists[i][j] != None:
+
+					print(listLists[i][j])
+
+			if listOverflowBuff != []:
+
+				for j in range(len(listOverflowBuff[i])):
+				
+					print("Overflow buffer #{}: {}".format(i, listOverflowBuff[i][j]))
+
+			print("=================")
 
 		print("\n")
+
+		lines = readInList(infile)
+
+		lines.sort()
+
+		with open(outfile, "w") as f1:
+
+			with open(infile, "r+") as f:
+
+				for line in lines:
+
+					f1.write(line)
+
+			f1.close()
+		
+		f.close()
+
+		os.rename(outfile, infile)
 
 		main()		
 
@@ -391,107 +326,82 @@ def main():
 		
 		carIdSearch = input('Enter the ID : ')
 
+		blockId = int(carIdSearch[3])
+
 		modlist = []
 
 		lines = []
 
-		with open(infile, "r+") as f:
+		result = 0
 
-			for row in f:
+		for i in range (len(listLists[blockId])):
 
-				for i in range(len(dList)):
+			if carIdSearch in listLists[blockId][i]:
 
-					if row[3] == str(i):
+				print(listLists[blockId][i])
 
-						lines.append(row)
-
-			f.close()
-
-		with open(infile, "w+") as f:
-
-			for line in lines:
-
-				if carIdSearch in line:
+				oldField = input("Field to modify: ")
 					
-					print(line)
-
-					modlist.append(input("Field to modify: "))
+				newField = input("New data: ")
 					
-					newfield = input("New data: ")
+				listLists[blockId][i] = listLists[blockId][i].replace(oldField, newField )
 
-				for word in modlist:
+				result = 1 
+
+				break
+
+		for i in range(len(listOverflowBuff[blockId])):
+
+			if carIdSearch in listOverflowBuff[blockId][i]:
+
+				print(listOverflowBuff[blockId][i])
+
+				oldField = input("Field to modify: ")
 					
-					line = line.replace(word, newfield )
+				newField = input("New data: ")
+					
+				listOverflowBuff[blockId][i] = listOverflowBuff[blockId][i].replace(oldField, newField )
+
+				result = 1 
+
+				break
+
+		if result == 0:
+
+			print("No match found.")
+
+		elif result == 1:
+
+			with open(infile, "w+") as f1:
+
+				for i in range(len(listBlocks)):
+
+					for j in range(blockLen):
+
+						if listLists[i][j] is not None:
+					
+							f1.write(str(listLists[i][j]))
+
+					for k in range(len(listOverflowBuff[i])):
 				
-				f.write(line)
+						f1.write(str(listOverflowBuff[i][k]))
 
-			f.close()
+			f1.close()
 
-		dList = []
+		with open(outfile, "w") as f1:
 
+			with open(infile, "r+") as f:
 
+				for line in lines:
 
-		'''for i in range(len(dList)):
-				
-			dList[i].printList(dList[i].head)
+					f1.write(line)
 
-		with open(infile, "r+") as f:
-	
-			for row in f:
-		#for i in range(4):
-
-				if row[3] == carIdSearch[3]:
-
-					lines.append(row)
-
-			f.close()
+			f1.close()
 		
-		for i in range(len(dList)):
+		f.close()
 
-			#for j in range(len(dList[i])):
+		os.rename(outfile, infile)
 
-			if type(dList[i].head) is not None:
-
-				#tmp = (pridList[i].head)
-				
-				tmp = str(dList[i].printList(dList[i].head))
-
-				lines.append(tmp)
-
-		print (lines)
-
-		if carIdSearch in tmpString:
-
-			print(dList[i].getNodeData(dList[i].head))
-
-			dList[i].deleteNode(dList[i].head) 
-
-			modField = input("Field to modify: ")
-
-			newField = input("New data: ")
-
-			tmp = str(dList[i].getNodeData(dList[i].head))
-
-			tmp = tmp.replace(modField, newField)
-
-			dList[i].push(tmp)
-
-			#dList[i].printList(dList[i].head)
-
-			#dList[i] = str(dList[i].replace(modField, newField))
-
-
-		with open('carpark.txt', "r+") as f:
-					
-			for i in range(len(dList)):
-
-				tmp = str(dList[i].getNodeData(dList[i].head))
-
-				f.write(tmp)
-
-				#f.close()
-
-			f.close()'''
 
 		main()
 
@@ -501,42 +411,40 @@ def main():
 
 		carIdSearch = input('Enter the ID : ')
 
+		blockId = int(carIdSearch[3])
+
+		modlist = []
+
 		lines = []
 
-		with open(infile, "r+") as f:
+		result = 0
 
-			for row in f:
+		'''Checking if car is in main buffer'''
 
-				for i in range(len(dList)):
+		for i in range (len(listLists[blockId])):
 
-					if row[3] == str(i):
+			if carIdSearch in listLists[blockId][i]:
 
-						lines.append(row)
-
-			f.close()
-
-		for line in lines:
-
-			if carIdSearch in line:
-
-				print(line)
+				print(listLists[blockId][i])
 
 				deleteDesicion = input("Do you want to delete the record? Y/N: ")
 
 				if deleteDesicion == 'y' or deleteDesicion == 'Y':
+						
+					listLists[blockId][i] = None
 
-					lines.remove(line)
-					
-					with open(infile, "w+") as f:
+					if listOverflowBuff[i] != []:
 
-						for line in lines: 
+						listLists[blockId][i] = listOverflowBuff[i][0]
 
-							f.write(line)
-				
-					print("\nDone.\n ")
+						listOverflowBuff[i].pop(0)
 
-					main()
-				
+						break
+
+					result = 1 
+
+					break
+
 				elif deleteDesicion == 'n' or deleteDesicion == 'N':
 				
 					main()
@@ -547,6 +455,59 @@ def main():
 
 					main()
 
+		'''Checking if car is in overflow buffer'''
+
+		for i in range(len(listOverflowBuff[blockId])):
+
+			if carIdSearch in listOverflowBuff[blockId][i]:
+
+				print(listOverflowBuff[blockId][i])
+
+				deleteDesicion = input("Do you want to delete the record? Y/N: ")
+
+				if deleteDesicion == 'y' or deleteDesicion == 'Y':
+						
+					listOverflowBuff[i].pop(i)
+
+					result = 1 
+
+					break
+
+				elif deleteDesicion == 'n' or deleteDesicion == 'N':
+				
+					main()
+
+				else:
+					
+					print("Wrong button pressed. Returning to main menu.")
+
+					main()
+
+		if result == 0:
+
+			print("No match found.")
+
+		elif result == 1:
+
+			with open(infile, "w+") as f1:
+
+				for i in range(len(listBlocks)):
+
+					for j in range(blockLen):
+
+						if listLists[i][j] is not None:
+					
+							f1.write(str(listLists[i][j]))
+
+					for k in range(len(listOverflowBuff[i])):
+				
+						f1.write(str(listOverflowBuff[i][k]))
+
+			f1.close()
+
+		listBlocks = None
+
+		main()
 
 	elif choice == "6":
 
