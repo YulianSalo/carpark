@@ -1,170 +1,23 @@
 import os
-from objects import (
+from index_objects import (
 	Car as Car)
 from methods import (
 	carCheck as carCheck,
 	menu as menu,
 	idSearch as idSearch,
 	readInList as readInList,
-	reWrite as reWrite)
+	reWrite as reWrite,
+	createFile as createFile,
+	readInIndexList as readInIndexList)
 import re
-
 
 def main():
 
-	blockZero = []
-
-	blockOne = []
-
-	blockTwo = []
-
-	blockThree = []
-
-	blockFour = []
-
-	blockFive = []
-
-	blockSix = []
-
-	blockSeven = []
-
-	blockEight = []
-
-	blockNine = []
-
-	listZero = []
-
-	listOne = []
-
-	listTwo = []
-
-	listThree = []
-
-	listFour = []
-
-	listFive = []
-
-	listSix = []
-
-	listSeven = []
-
-	listEight = []
-
-	listNine = []
-
-	overflowBuffZero = []
-
-	overflowBuffOne = []
-
-	overflowBuffTwo = []
-
-	overflowBuffThree = []
-
-	overflowBuffFour = []
-
-	overflowBuffFive = []
-
-	overflowBuffSix = []
-
-	overflowBuffSeven = []
-
-	overflowBuffEight = []
-
-	overflowBuffNine = []
-
-	blockLen  = 5
-
-	#blockExample = [listExample, OverflowBuffExample]
-
-	listBlocks = [
-		blockZero, 
-		blockOne, 
-		blockTwo, 
-		blockThree, 
-		blockFour, 
-		blockFive, 
-		blockSix, 
-		blockSeven, 
-		blockEight, 
-		blockNine
-		]
-
-	listLists = [
-		listZero, 
-		listOne, 
-		listTwo, 
-		listThree, 
-		listFour, 
-		listFive, 
-		listSix, 
-		listSeven, 
-		listEight, 
-		listNine
-		]
-
-	listOverflowBuff = [
-		overflowBuffZero, 
-		overflowBuffOne, 
-		overflowBuffTwo, 
-		overflowBuffThree, 
-		overflowBuffFour,
-	 	overflowBuffFive, 
-	 	overflowBuffSix, 
-	 	overflowBuffSeven, 
-	 	overflowBuffEight, 
-	 	overflowBuffNine
-	 	]
-
-	for i in range(len(listBlocks)):
-
-		listBlocks[i].append(listLists[i])
-
-		listBlocks[i].append(listOverflowBuff[i])
-
-		for j in range(blockLen): 
-
-			listLists[i].append(None)
-
-
-	#print(listBlocks)
-
-	infile = "directCar.txt"
+	infile = "indexCar.txt"
 
 	outfile = "carparkMod.txt"
 
-	counter = 0
-
-	with open(infile, "r+")as f:
-
-		for row in f:
-
-			counter +=1
-
-	with open(infile, "r+") as f:
-
-		for row in f:
-
-			for i in range(len(listBlocks)):
-
-					for j in range(counter):
-
-						if j < 5:
-
-							if row[3] == str(i) and listLists[i][j] is None:
-
-
-								listLists[i][j] = row
-
-								break
-
-						if row[3]== str(i) and listLists[i][4] is not None and j >= 5 :
-
-							listOverflowBuff[i].append(row)
-
-							break
-
-	f.close()
-
+	indexInFile  = "indexBlocks.txt"
 
 	menu()
 
@@ -176,47 +29,39 @@ def main():
 
 		'''Input data '''
 
-		if not os.path.exists(infile):
+		carstore = createFile(infile)
 
-			carstore = open(infile, "w+")
-
-		else:
-
-			carstore = open(infile, "a")
+		indexFile = createFile(indexInFile)
 
 		carInCarPark = Car.carInput(infile)
 
-		getCarId = str(carInCarPark.getCarID())
-
-		for i in range(len(listBlocks)):
-
-			for j in range(len(listLists[i])):
-
-				if getCarId[-1] == str(i) and listLists[i][j] == None :
-
-					listLists[i][j] = str(carInCarPark)
-
-					carstore.write(str(listLists[i][j]))
-
-					break
-
-				elif getCarId[-1] == str(i) and listLists[i][4] != None:
-
-					listOverflowBuff[i].append(str(carInCarPark))
-
-					carstore.write(str(listOverflowBuff[i][-1]))
-
-					break
+		carstore.write(str(carInCarPark))
 
 		carstore.close()
-
-		print("\n")
 
 		lines = readInList(infile)
 
 		lines.sort()
 
 		reWrite(infile, outfile, lines)
+
+		getCarId = str(carInCarPark.getCarID())
+
+		getBlock = str(carInCarPark.getBlock())
+
+		indexBlock = getCarId + " " + getBlock
+
+		indexFile.write(indexBlock)
+
+		indexFile.close()
+
+		indexLines = readInList(indexInFile)
+
+		indexLines.sort()
+
+		reWrite(indexInFile,outfile, indexLines) 
+
+		print("\n")
 
 		main()
 
@@ -285,7 +130,19 @@ def main():
 
 		lines.sort()
 
-		reWrite(infile, outfile, lines)
+		with open(outfile, "w") as f1:
+
+			with open(infile, "r+") as f:
+
+				for line in lines:
+
+					f1.write(line)
+
+			f1.close()
+		
+		f.close()
+
+		os.rename(outfile, infile)
 
 		main()		
 
@@ -357,7 +214,20 @@ def main():
 
 			f1.close()
 
-		reWrite(infile, outfile, lines)
+		with open(outfile, "w") as f1:
+
+			with open(infile, "r+") as f:
+
+				for line in lines:
+
+					f1.write(line)
+
+			f1.close()
+		
+		f.close()
+
+		os.rename(outfile, infile)
+
 
 		main()
 
@@ -477,6 +347,16 @@ def main():
 
 		print("Programming God's mode is not implemented yet.")
 
+		indexFile = createFile(indexInfile)
+
+		#carstore = createFile(infile)
+
+		indexLines = readInIndexList(infile)
+
+		indexLines.sort()
+
+		reWrite(indexInfile, outfile, indexLines)
+
 		main()
 
 	else:
@@ -484,6 +364,8 @@ def main():
 		print("Wrong button pressed.")
 		
 		main()
+
+
 
 if __name__ == '__main__':
 	main()

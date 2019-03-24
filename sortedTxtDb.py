@@ -22,6 +22,8 @@ def main():
 
 		'''Input data '''
 
+		nfile = "carpark.txt"
+
 		if not os.path.exists("carParkSort.txt"):
 			
 			carstore = open("carParkSort.txt", "w+")
@@ -30,7 +32,7 @@ def main():
 
 			carstore = open("carParkSort.txt", "a")
 
-		carInCarPark = Car.carInput()
+		carInCarPark = Car.carInput(infile)
 
 		carstore.write(str(carInCarPark))
 

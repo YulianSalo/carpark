@@ -77,6 +77,7 @@ def carCheck(file, param):
 
 	return param
 
+
 def idSearch(workingFile):
 	
 	lines = []
@@ -115,6 +116,7 @@ def idSearch(workingFile):
 
 	return sortId
 
+
 def readInList(infile):
 
 	lines = []
@@ -129,11 +131,12 @@ def readInList(infile):
 
 	return lines
 
-def reWrite(infile, outfile, lines):
 
-	with open(outfile, "w") as f1:
+def reWrite(file1, file2, lines):
 
-		with open(infile, "r+") as f:
+	with open(file2, "w") as f1:
+
+		with open(file1, "r+") as f:
 		
 			for line in lines:
 
@@ -143,85 +146,49 @@ def reWrite(infile, outfile, lines):
 
 		f.close()
 
-	os.rename(outfile, infile)
+	os.rename(file2, file1)
 
-def reWrited(infile, outfile, gotId):
-	
-	with open(outfile, "w+") as f1:
 
-		with open(infile, "r+") as f:
+def createFile(infile):
+
+	''' creates file  '''
+
+	if not os.path.exists(infile):
+
+		carstore = open(infile, "w+")
+
+	else:
+
+		carstore = open(infile, "a")
+
+	return carstore
+
+def readInIndexList(infile):
+
+	lines = []
+
+	indexLines = []
+
+	with open(infile, "r+") as f:
+
+		for row in f:
+			#for i in range(4):
+			lines.append(row)
 		
-			for line in f:
+		for i in range(len(lines)):
+				
+			gotId = lines[i][0] + lines[i][1] + lines[i][2] + lines[i][3]
 
-				tmp = (line[:4])
+			print(lines[i][-2])
 
-				#print(line)
+			blockId = lines[i][-2]
 
-				#gotId = int(line[:4])
+			indexRow = gotId + " " + blockId + "\n"
 
-				#print(gotId)
-
-				smlst = gotId
-
-				prevsml = '0'
-
-
-				if gotId > tmp and gotId > prevsml:
-
-					c = 0
-
-					print(c+1)
-
-					gotId = tmp
-
-					smlst = tmp
-
-					print(smlst)
-
-					#reWrited(infile, outfile, gotId)
-
-				elif gotId>=tmp and tmp == smlst and tmp > prevsml:
-
-					print(line)
-
-					f1.write(line)
-					
-					prevsml = smlst
-
-					
-
-					#reWrited(infile, outfile, gotId)
-
-				'''for row in f: 
-
-					if gotId > int(row[:4]):
-
-						gotId = int(row[:4])
-
-						print(gotId)
-
-						reWrited(infile, outfile, gotId)
-
-
-					#reWrited(infile, outfile)
-
-					elif int(gotId) >= int(row[:4]):
-
-						print(row)
-
-						f1.write(row)
-						#f.write()
-					
-
-					#reWrited(infile, outfile, gotId)'''
-
-			f1.close()
+			indexLines.append(indexRow)
 
 		f.close()
 
-		reWrited(infile, outfile, gotId)
+		#print(lines)
 
-	#os.rename(outfile, infile)
-
-
-	#os.rename(outfile, infile)
+	return indexLines

@@ -75,15 +75,9 @@ class Car(object):
 			self.owner, 
 			self.place)
 
-	def defaultPrint():
-		print('Car ID      Make       Model       Year       numberPlate   Color      Owner(s)     Place      \n')
-
-
-	def carInput():
+	def carInput(file):
 		
 		carId = input("Enter carID in such a way:0000. Your input:  ")
-
-		file = "carpark.txt"
 
 		checkedCarId = idRegEx(carId)
 
@@ -126,4 +120,103 @@ class Car(object):
 			place = carPlace)		
 
 		return carInCarPark
+
+class Node: 
+
+	def __init__(self, data):
+
+		self.data = data  
+	
+		self.next = None
+	
+		self.prev = None
+
+	def __str__(self, data):
+	
+		return self.data
+
+class DoublyLinkedList: 
+
+	def __init__(self): 
+	
+		self.head = None
+
+
+	def deleteNode(self, dele): 
+
+		if self.head is None or dele is None: 
+			
+			return 
+
+		if self.head == dele:
+			
+			self.head = dele.next
+
+		if dele.next is not None: 
+			
+			dele.next.prev = dele.prev 
+
+		if dele.prev is not None: 
+			
+			dele.prev.next = dele.next
+
+		gc.collect() 
+
+
+	# Given a reference to the head of a list and an 
+	# integer, inserts a new node on the front of list 
+	def push(self, new_data): 
+
+		# 1. Allocates node 
+		# 2. Put the data in it 
+		new_node = Node(new_data) 
+
+		# 3. Make next of new node as head and 
+		# previous as None (already None) 
+		new_node.next = self.head 
+
+		# 4. change prev of head node to new_node 
+		if self.head is not None: 
+		    self.head.prev = new_node 
+
+		# 5. move the head to point to the new node 
+		self.head = new_node 
+
+
+	def printList(self, node): 
+		
+		while(node is not None): 
+		
+			print (node.data) 
+		
+			node = node.next
+
+	def getNodeData(self, node):
+
+		 data = node.data
+
+		 return data
+
+'''dListZero = DoublyLinkedList()
+
+dListOne = DoublyLinkedList()
+
+dListTwo = DoublyLinkedList()
+
+dListThree = DoublyLinkedList()
+
+dListFour = DoublyLinkedList()
+
+dListFive = DoublyLinkedList()
+
+dListSix = DoublyLinkedList()
+
+dListSeven = DoublyLinkedList()
+
+dListEight = DoublyLinkedList()
+
+dListNine = DoublyLinkedList()'''
+
+#dList = [dListZero, dListOne, dListTwo, dListThree, dListFour, dListFive, dListSix, dListSeven, dListEight, dListNine]
+
 

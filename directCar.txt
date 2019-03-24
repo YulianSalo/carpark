@@ -15,6 +15,7 @@
 0022 BMW 330 2016 BC0302EE Blue Kolko P.P. 21
 0024 Nissan Leaf 2015 BC9343EM White Blemko Z.A. 30
 0026 Subaru Forester 2010 BC083EM Blue Boykiv T.I. 35
+0027 Peugeot  206 203 BC4734EA Red Palinko O.A. 70
 0028 Fiat Doblo 2005 BC9134AB Red Pikunov B.B. 19
 0029 Peugeot 208 2010 BC9262EI Green Abramova A.O. 39
 0031 Skoda Superb 2016 BC7788BB White Makar V.V. 29

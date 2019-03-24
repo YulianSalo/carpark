@@ -22,15 +22,17 @@ def main():
 
 		'''Input data '''
 
-		if not os.path.exists("carpark.txt"):
+		infile = "carpark.txt"
 
-			carstore = open("carpark.txt", "w+")
+		if not os.path.exists(infile):
+
+			carstore = open(infile, "w+")
 
 		else:
 
-			carstore = open("carpark.txt", "a")
+			carstore = open(infile, "a")
 
-		carInCarPark = Car.carInput()
+		carInCarPark = Car.carInput(infile)
 
 		carstore.write(str(carInCarPark))
 

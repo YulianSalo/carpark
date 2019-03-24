@@ -33,3 +33,79 @@ Car ID: 003A Make: Audi: Model: A4 Year: 2014 numberPlate: BC2546AB Color: Blue 
 0029 Peugeot 208 2010 BC9262EI Green Abramova A.O. 39
 0026 Subaru Forester 2010 BC083EM Blue Boykiv T.I. 35
 0036 Ford Transit 2004 BC02293AI White Mizkiv R.O. 38
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0001 Audi A1 2018 BC0123AA Red Zaur A.A. 01
+0003 BMW Z4 2009 BC0323AB Black Cher O.A. 06
+0004 Audi A8 2003 BC0001AA Yellow Pakora P.P. 08
+0005 Mazda 3 2012 BC5654EP Grey Bipon B.O. 02
+0006 Citroen C4 2016 BC9874EB Red Buk O.A. 04
+0009 Mazda 6 2014 BC0609IE White Tartsiv O.P. 28
+0010 Dodge Durango 2012 BC0990CE Black Visik E.O. 13
+0014 Toyota Corolla 2017 BC3247II Brown Poshko T.I. 15
+0015 Dacia Duster 2012 BC8096IM Black Malyshev A.M. 16
+0016 Skoda Fabia 2008 BC1457BI Yellow Natskiv M.O. 20
+0017 Mitsubishi Colt 2009 BC0343EH Grey Kiplar A.B. 22
+0018 Audi Q7 2018 BC0220IO Brown Zutovksa O.L. 26
+0019 Chevrolet Cruze 2009 BC1768EB Red Olinko I.A 11
+0021 Renault Laguna 2012 BC3222II White Valerkon P.O. 18
+0022 BMW 330 2016 BC0302EE Blue Kolko P.P. 21
+0024 Nissan Leaf 2015 BC9343EM White Blemko Z.A. 30
+0026 Subaru Forester 2010 BC083EM Blue Boykiv T.I. 35
+0028 Fiat Doblo 2005 BC9134AB Red Pikunov B.B. 19
+0029 Peugeot 208 2010 BC9262EI Green Abramova A.O. 39
+0031 Skoda Superb 2016 BC7788BB White Makar V.V. 29
+0032 Dacia Sandero 2016 BC0702EB Blue Viklov I.B. 25
+0034 Skoda Octavia 1999 BC2257OB Green Andrushko Z.T. 14
+0036 Ford Transit 2004 BC02293AI White Mizkiv R.O. 38
+0044 Ford Focus 2015 BC1221EB Blue Ilkiv A.M. 12
+0046 Audi A5 2018 BC33332EB Red Bolik O.L. 48
+0055 Audi A4 2001 BC2217EB Red Pokoiv K.K. 50
+0056 Porsche 911 2010 AA5545AA Yellow Tarema A.K. 66
+0079 Seat Leon 2000 BC02455BB White Marenko P.P. 10
+0081 Audi A5 2012 BC1789EA Black Gora K.K. 61
+0091 Dacia Sandero 2011 BC3347II Grey Valerkon P.O. 17
+0101 Audi A3 2015 BC1123AA Blue Baum I.A. 03
+0111 Kia Ceed 2011 BC9912EC Grey Linyo B.A. 09
+0112 Toyota Camry 2008 BC3422OB Blue Kinolin O.I. 05
+0114 Mitsubishi Lancer 2010 BC0343EM Grey Kolomiv S.P. 23
+0181 Audi A6 2012 BC1678EA Black Gora B.K. 61
+0196 Chevrolet Lacetti 2005 AT7845IB Red Lazorko I.O. 67
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+0001 Audi A1 2018 BC0123AA Red Zaur A.A. 01 1
+0003 BMW Z4 2009 BC0323AB Black Cher O.A. 06 3
+0004 Audi A8 2003 BC0001AA Yellow Pakora P.P. 08 4
+0005 Mazda 3 2012 BC5654EP Grey Bipon B.O. 02 5
+0006 Citroen C4 2016 BC9874EB Red Buk O.A. 04 6
+0009 Mazda 6 2014 BC0609IE White Tartsiv O.P. 28 9
+0010 Dodge Durango 2012 BC0990CE Black Visik E.O. 13 0
+0014 Toyota Corolla 2017 BC3247II Brown Poshko T.I. 15 4 
+0015 Dacia Duster 2012 BC8096IM Black Malyshev A.M. 16 5
+0016 Skoda Fabia 2008 BC1457BI Yellow Natskiv M.O. 20 6
+0017 Mitsubishi Colt 2009 BC0343EH Grey Kiplar A.B. 22 7
+0018 Audi Q7 2018 BC0220IO Brown Zutovksa O.L. 26 2
+0019 Chevrolet Cruze 2009 BC1768EB Red Olinko I.A 11 9
+0021 Renault Laguna 2012 BC3222II White Valerkon P.O. 18 1
+0022 BMW 330 2016 BC0302EE Blue Kolko P.P. 21 2
+0024 Nissan Leaf 2015 BC9343EM White Blemko Z.A. 30 4
+0026 Subaru Forester 2010 BC083EM Blue Boykiv T.I. 35 6
+0028 Fiat Doblo 2005 BC9134AB Red Pikunov B.B. 19 8
+0029 Peugeot 208 2010 BC9262EI Green Abramova A.O. 39 9
+0031 Skoda Superb 2016 BC7788BB White Makar V.V. 29 1
+0032 Dacia Sandero 2016 BC0702EB Blue Viklov I.B. 25 2
+0034 Skoda Octavia 1999 BC2257OB Green Andrushko Z.T. 14 4
+0036 Ford Transit 2004 BC02293AI White Mizkiv R.O. 38 6
+0044 Ford Focus 2015 BC1221EB Blue Ilkiv A.M. 12 4
+0046 Audi A5 2018 BC33332EB Red Bolik O.L. 48 6
+0055 Audi A4 2001 BC2217EB Red Pokoiv K.K. 50 5
+0056 Porsche 911 2010 AA5545AA Yellow Tarema A.K. 66 6
+0079 Seat Leon 2000 BC02455BB White Marenko P.P. 10 1
+0081 Audi A5 2012 BC1789EA Black Gora K.K. 61 1
+0091 Dacia Sandero 2011 BC3347II Grey Valerkon P.O. 17 1
+0101 Audi A3 2015 BC1123AA Blue Baum I.A. 03 1
+0111 Kia Ceed 2011 BC9912EC Grey Linyo B.A. 09 1
+0112 Toyota Camry 2008 BC3422OB Blue Kinolin O.I. 05 2
+0114 Mitsubishi Lancer 2010 BC0343EM Grey Kolomiv S.P. 23 4
+0181 Audi A6 2012 BC1678EA Black Gora B.K. 61 1
+0196 Chevrolet Lacetti 2005 AT7845IB Red Lazorko I.O. 67 6
